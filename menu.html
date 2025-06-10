@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Foodie's Delight menu - gourmet pizzas, pasta, seafood, and decadent desserts">
+    <title>Foodie's Delight | Artisanal Menu & Culinary Creations</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #e63946;
+            --secondary-color: #f1faee;
+            --dark-color: #1d3557;
+            --light-color: #a8dadc;
+            --accent-color: #457b9d;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        .navbar {
+            padding: 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(29, 53, 87, 0.95) !important;
+        }
+        
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .menu-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/menu-header.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+        
+        .menu-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .menu-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .menu-category {
+            margin-bottom: 60px;
+        }
+        
+        .category-title {
+            position: relative;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+        }
+        
+        .category-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .menu-item {
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .card-title {
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .card-text {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .badge-veg {
+            background-color: #28a745;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        
+        .badge-spicy {
+            background-color: #dc3545;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        
+        .badge-gf {
+            background-color: #ffc107;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo span {
+            color: var(--primary-color);
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .footer-links h3 {
+            color: white;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .newsletter-input {
+            padding: 12px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .menu-header {
+                padding: 80px 0;
+                margin-bottom: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Foodie's Delight</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary ms-lg-3" href="reservations.html">Reservations</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Header -->
+    <section class="menu-header">
+        <div class="container">
+            <h1 class="display-3 fw-bold">Our Artisanal Menu</h1>
+            <p class="lead">Crafted with passion, served with perfection</p>
+            <a href="#starters" class="btn btn-outline-light btn-lg mx-2">Starters</a>
+            <a href="#mains" class="btn btn-outline-light btn-lg mx-2">Main Courses</a>
+            <a href="#desserts" class="btn btn-outline-light btn-lg mx-2">Desserts</a>
+        </div>
+    </section>
+
+    <!-- Menu Content -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Starters Section -->
+            <div class="menu-category" id="starters">
+                <h2 class="text-center category-title">Starters & Appetizers</h2>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card menu-item">
+                            <img src="images/Classic Bruschetta.jpg" class="card-img-top" alt="Bruschetta">
+                            <div class="card-body">
+                                <h5 class="card-title">Tomato Bruschetta <span class="badge-veg">Vegetarian</span></h5>
+                                <p class="card-text">Toasted bread topped with tomatoes, garlic, fresh basil, and olive oil.</p>
+                                <p class="price">$8.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card menu-item">
+                            <img src="images/Fried Calamari Recipe.jpg" class="card-img-top" alt="Calamari">
+                            <div class="card-body">
+                                <h5 class="card-title">Crispy Calamari <span class="badge-spicy">Spicy</span></h5>
+                                <p class="card-text">Lightly fried squid served with lemon aioli and spicy marinara.</p>
+                                <p class="price">$10.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card menu-item">
+                            <img src="images/Caprese Salad with Balsamic Reduction.jpg" class="card-img-top" alt="Caprese Salad">
+                            <div class="card-body">
+                                <h5 class="card-title">Caprese Salad <span class="badge-veg">Vegetarian</span> <span class="badge-gf">Gluten Free</span></h5>
+                                <p class="card-text">Fresh mozzarella, tomatoes, and sweet basil drizzled with balsamic glaze.</p>
+                                <p class="price">$9.99</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Courses Section -->
+            <div class="menu-category" id="mains">
+                <h2 class="text-center category-title">Main Courses</h2>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card menu-item">
+                            <img src="images/spec2.jpg" class="card-img-top" alt="Margherita Pizza">
+                            <div class="card-body">
+                                <h5 class="card-title">Margherita Pizza <span class="badge-veg">Vegetarian</span></h5>
+                                <p class="card-text">Classic pizza with San Marzano tomato sauce, fresh mozzarella di bufala, and basil.</p>
+                                <p class="price">$14.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card menu-item">
+                            <img src="images/spec3.jpg" class="card-img-top" alt="Pasta Carbonara">
+                            <div class="card-body">
+                                <h5 class="card-title">Pasta Carbonara</h5>
+                                <p class="card-text">Traditional spaghetti with creamy egg sauce, guanciale, and aged pecorino romano.</p>
+                                <p class="price">$16.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card menu-item">
+                            <img src="images/dish4.jpg" class="card-img-top" alt="Grilled Salmon">
+                            <div class="card-body">
+                                <h5 class="card-title">Grilled Salmon <span class="badge-gf">Gluten Free</span></h5>
+                                <p class="card-text">Wild-caught salmon fillet with lemon beurre blanc and seasonal vegetables.</p>
+                                <p class="price">$22.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card menu-item">
+                            <img src="images/Classic Caesar Salad Recipe for Every Occasion.jpg" class="card-img-top" alt="Caesar Salad">
+                            <div class="card-body">
+                                <h5 class="card-title">Classic Caesar <span class="badge-gf">Gluten Free</span></h5>
+                                <p class="card-text">Hearts of romaine, garlic croutons, parmigiano-reggiano with our house-made dressing.</p>
+                                <p class="price">$12.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card menu-item">
+                            <img src="images/Smash Burgers with Baconnaise Sauce - knedir Recipes.jpg" class="card-img-top" alt="Beef Burger">
+                            <div class="card-body">
+                                <h5 class="card-title">Gourmet Beef Burger</h5>
+                                <p class="card-text">8oz grass-fed beef patty with aged cheddar, brioche bun, and truffle aioli.</p>
+                                <p class="price">$15.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card menu-item">
+                            <img src="images/Garlic Butter-Seared Ribeye Steak.jpg" class="card-img-top" alt="Ribeye Steak">
+                            <div class="card-body">
+                                <h5 class="card-title">Ribeye Steak <span class="badge-gf">Gluten Free</span></h5>
+                                <p class="card-text">12oz prime ribeye with roasted garlic compound butter and truffle fries.</p>
+                                <p class="price">$28.99</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Desserts Section -->
+            <div class="menu-category" id="desserts">
+                <h2 class="text-center category-title">Desserts</h2>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card menu-item">
+                            <img src="images/dish3.jpg" class="card-img-top" alt="Chocolate Lava Cake">
+                            <div class="card-body">
+                                <h5 class="card-title">Chocolate Lava Cake <span class="badge-veg">Vegetarian</span></h5>
+                                <p class="card-text">Warm Valrhona chocolate cake with molten center and vanilla bean gelato.</p>
+                                <p class="price">$9.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card menu-item">
+                            <img src="images/Classic Tiramisu – The Best Infused Italian Dessert !.jpg" class="card-img-top" alt="Tiramisu">
+                            <div class="card-body">
+                                <h5 class="card-title">Classic Tiramisu <span class="badge-veg">Vegetarian</span></h5>
+                                <p class="card-text">Layers of coffee-soaked ladyfingers and mascarpone cream.</p>
+                                <p class="price">$8.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card menu-item">
+                            <img src="images/Gordon Ramsay Creme Brulee Recipe Chef Ramsay Recipes.jpg" class="card-img-top" alt="Crème Brûlée">
+                            <div class="card-body">
+                                <h5 class="card-title">Crème Brûlée <span class="badge-veg">Vegetarian</span> <span class="badge-gf">Gluten Free</span></h5>
+                                <p class="card-text">Rich vanilla custard with caramelized sugar crust and fresh berries.</p>
+                                <p class="price">$8.99</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 bg-dark text-white">
+        <div class="container text-center">
+            <h2 class="display-5 fw-bold mb-4">Ready to Experience Our Cuisine?</h2>
+            <p class="lead mb-5">Reserve your table today for an unforgettable dining experience</p>
+            <a href="reservations.html" class="btn btn-primary btn-lg px-5 py-3">Book Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="index.html" class="footer-logo">Foodie's <span>Delight</span></a>
+                    <p>We're committed to sustainable dining practices and supporting local farmers and producers in our community.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Our Menu</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>Information</h3>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="reservations.html">Reservations</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="gift-cards.html">Gift Cards</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to receive updates on seasonal menus, special events, and exclusive offers.</p>
+                    <form class="newsletter-form">
+                        <input type="email" class="newsletter-input mb-3" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-outline-light">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Foodie's Delight. All rights reserved. | <a href="privacy.html" class="text-white">Privacy Policy</a> | <a href="terms.html" class="text-white">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
