@@ -31,7 +31,7 @@ https://rohmanadeem.github.io/food/
 
 ## Project Structure
 
-
+```plaintext
 food/
 ├── index.html
 ├── menu.html
