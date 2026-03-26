@@ -45,7 +45,7 @@ food/
 │   ├── ayesha.jpg
 │   ├── hamad.jpg
 │   ├── sarah.jpg
-│   └── ... (other images as needed)
+│   └── (other images as needed)
 └── README.md
 
 ## Future Improvements
