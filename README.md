@@ -30,6 +30,8 @@ A modern, responsive restaurant website showcasing the menu, location, and conta
 https://rohmanadeem.github.io/food/
 
 ## Project Structure
+
+
 food/
 ├── index.html
 ├── menu.html
@@ -47,6 +49,7 @@ food/
 │   ├── sarah.jpg
 │   └── (other images as needed)
 └── README.md
+```
 
 ## Future Improvements
 
